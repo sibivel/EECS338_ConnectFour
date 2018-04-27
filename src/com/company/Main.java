@@ -24,10 +24,10 @@ public class Main {
 //        }
 
 
-        GameBoard board = new GameBoard(4,5,4);
+        GameBoard board = new GameBoard(3,3,3);
         Scanner in = new Scanner(System.in);
         boolean playing = true;
-        GameAI ai = new GameAI();
+        GameAI ai = new TreeSplitAI();
         while(board != null && board.getWinner() == 0){
             board.printBoard();
             if(playing){
