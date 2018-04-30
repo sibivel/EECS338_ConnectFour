@@ -50,6 +50,7 @@ public class AlphaBetaAI extends GameAI {
         double max = Double.NEGATIVE_INFINITY;
         int arg = -1;
         for(int i = 0; i < cols; i++){
+            System.out.println(results[i]);
             if(results[i] > max){
                 max = results[i];
                 arg = i;

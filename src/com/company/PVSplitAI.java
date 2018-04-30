@@ -39,7 +39,14 @@ public class PVSplitAI extends GameAI {
             }
             son++;
         }
-
+        GameBoard firstchild = gameBoard.makeMove(son);
+        alpha = -pvsplit(firstchild,depth-1, -beta, -alpha, !playing);
+        if(alpha > beta){
+            return alpha;
+        }
+        for(int i = son+1; son < gameBoard.getCols(); i++){
+            ;
+        }
         return 0;
     }
 }

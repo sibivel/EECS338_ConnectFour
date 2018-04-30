@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public abstract class GameAI {
 
-    protected double startDepth = 100;
+    protected double startDepth = -1;
 
     /**
      * Constructor for a game playing ai.

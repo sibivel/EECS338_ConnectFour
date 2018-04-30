@@ -24,16 +24,19 @@ public class Main {
 //        }
 
 
-        GameBoard board = new GameBoard(3,3,3);
+        GameBoard board = new GameBoard(4,4,4);
         Scanner in = new Scanner(System.in);
         boolean playing = true;
-        GameAI ai = new TreeSplitAI();
+        GameAI tsai = new TreeSplitAI();
+        GameAI abai = new AlphaBetaAI2();
+        board = board.makeMove(1);
         while(board != null && board.getWinner() == 0){
             board.printBoard();
             if(playing){
                 board = board.makeMove(in.nextInt());
             }else{
-                board = board.makeMove(ai.makeMove(board));
+                board = board.makeMove(abai.makeMove(board));
+//                abai.makeMove(board);
             }
 //            board = board.makeMove(ai.makeMove(board));
 
