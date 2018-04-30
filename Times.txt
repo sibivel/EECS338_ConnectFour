@@ -1,0 +1,5 @@
+3 4 3
+Full takes 22.715114021 seconds
+None takes 0.00217918 seconds
+Base takes 0.008613675 seconds
+

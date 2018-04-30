@@ -2,7 +2,7 @@ package com.company;
 
 import java.util.ArrayList;
 
-public class AlphaBetaAI extends GameAI {
+public class AlphaBetaAINoThreading extends GameAI {
 
     /**
      * function to call in order to find the best move.
@@ -18,7 +18,6 @@ public class AlphaBetaAI extends GameAI {
         int cols = gameBoard.getBoard()[0].length;
         /* this array will be shared between all threads */
         double[] results = new double[cols];
-        ArrayList<Thread> threads = new ArrayList<>();
         for(int i = 0; i<cols; i++){
             results[i] = Double.NEGATIVE_INFINITY;
             GameBoard nboard = gameBoard.makeMove(i);
@@ -30,27 +29,13 @@ public class AlphaBetaAI extends GameAI {
                 return i;
             }
             int finalI = i;
-            Thread t = new Thread(){
-                @Override
-                public void run(){
-                    results[finalI] = alphabeta(nboard, (int)startDepth, Double.NEGATIVE_INFINITY, Double.POSITIVE_INFINITY, false);;
-                }
-            };
-            threads.add(t);
-            t.start();
+            results[finalI] = alphabeta(nboard, (int)startDepth, Double.NEGATIVE_INFINITY, Double.POSITIVE_INFINITY, false);;
 
         }
-        for(Thread t : threads){
-            try {
-                t.join();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
+
         double max = Double.NEGATIVE_INFINITY;
         int arg = -1;
         for(int i = 0; i < cols; i++){
-            System.out.println(results[i]);
             if(results[i] > max){
                 max = results[i];
                 arg = i;
